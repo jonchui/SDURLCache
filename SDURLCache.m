@@ -133,7 +133,7 @@ static NSDateFormatter* CreateDateFormatter(NSString *format)
     NSDate *now;
     if (date)
     {
-        now = [SDURLCache dateFromHttpDateString:date];
+        now = [SDURLCache dateFromHttpDateString:date]; 
     }
     else
     {
@@ -425,9 +425,9 @@ static NSDateFormatter* CreateDateFormatter(NSString *format)
 {
     // iOS 5 implements disk caching. SDURLCache then disables itself at runtime if the current device OS
     // version is 5 or greater
-    NSArray *version = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    disabled = [[version objectAtIndex:0] intValue] >= 5;
-
+//    NSArray *version = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+//    disabled = [[version objectAtIndex:0] intValue] >= 5;
+    disabled = NO; // hack for now to enable in ios5 - JC
     if (disabled)
     {
         // iOS NSURLCache doesn't accept a full path but a single path component
